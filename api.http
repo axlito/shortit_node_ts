@@ -1,0 +1,66 @@
+### get api docs
+GET http://localhost:1234/
+
+### get all urls
+GET http://localhost:1234/urls
+
+### get url by id
+GET http://localhost:1234/urls/0b386662-b997-4d6f-960d-f49084bfdaa0
+
+### get url by query
+GET http://localhost:1234/urls?search=yes
+
+### create an url
+POST http://localhost:1234/urls
+Content-Type: application/json
+
+{
+    "base_url": "https://created.yes",
+    "short_url": "http://shorted.dev/uusd34"
+}
+
+### delete an url by id
+DELETE http://localhost:1234/urls/213f08f0-948f-469b-95b5-07534c272fdb
+
+
+
+
+
+
+### REGISTER USER
+POST http://localhost:1234/register
+Content-Type: application/json
+
+{
+    "email": "cdlopez@gmail.com",
+    "password": "12345678"
+}
+
+### LOGIN USER
+POST http://localhost:1234/login
+Content-Type: application/json
+
+{
+    "email": "cdlopez@gmail.com",
+    "password": "12345678"
+}
+
+### TEST AUTH TOKEN
+GET http://localhost:1234/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNkbG9wZXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkeWpTbHlGTmwwMmVNYk0zOVU0SkZnT21kbURQcHBxZlNWLkxHRnBEcEYzWTFibEhWQUdMUmUiLCJpYXQiOjE3MDU1NTQwNDMsImV4cCI6MTcwNTU1NDk0M30.njit6CAi22-XxZsjzFbpGKwcOQrrQ_0P41nlOHoawtI
+
+### REFRESH TOKEN
+POST http://localhost:1234/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNkbG9wZXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkeWpTbHlGTmwwMmVNYk0zOVU0SkZnT21kbURQcHBxZlNWLkxHRnBEcEYzWTFibEhWQUdMUmUiLCJpYXQiOjE3MDU1NTQwNDN9.dhR6sC5Ct_IRaP0yxSKFHppCk_NV208dHnvTN4uSkv4"
+}
+
+### DELETE TOKEN
+DELETE  http://localhost:1234/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNkbG9wZXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkeWpTbHlGTmwwMmVNYk0zOVU0SkZnT21kbURQcHBxZlNWLkxHRnBEcEYzWTFibEhWQUdMUmUiLCJpYXQiOjE3MDU1NTQwNDN9.dhR6sC5Ct_IRaP0yxSKFHppCk_NV208dHnvTN4uSkv4"
+}
