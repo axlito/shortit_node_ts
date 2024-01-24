@@ -8,5 +8,6 @@ urlRouter.get('/', urlService.getAllUrls)
 
 urlRouter.post('/',urlService.createUrl)
 
-// urlRouter.get('/:id', urlController.getById)
-// urlRouter.delete('/:id', urlController.delete)
+urlRouter.get('/:id', urlService.getUrlById)
+
+urlRouter.delete('/:id', urlService.deleteUrl)

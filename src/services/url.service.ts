@@ -5,7 +5,7 @@ import { Request, Response } from 'express'
 
 export const getAllUrls = async (req: Request, res: Response) => {
 
-  let urls: UrlInterface[]
+  let urls: UrlInterface[] = []
   const search = req.body.search
 
   if (search) {
@@ -30,7 +30,7 @@ export const createUrl = async (req: Request, res: Response) => {
   const result = validateUrl(newUrl)
 
   if (result.error) {
-    return res.status(500).json({ error: result.error.message })
+    return res.status(404).json({ error: result.error.message })
   }
 
   const url = await prisma.url.create({
@@ -41,5 +41,38 @@ export const createUrl = async (req: Request, res: Response) => {
   })
 
   return res.status(200).json(url)
+
+}
+
+export const getUrlById = async (req: Request, res: Response) => {
+
+  let urls: UrlInterface | null
+  const { id } = req.params
+
+  urls = await prisma.url.findUnique({
+    where: { id: id }
+  })
+
+  if (urls !== null) {
+    return res.status(200).json(urls)
+  }
+
+  return res.status(404).json({ message: 'URL not found' })
+
+}
+
+export const deleteUrl = async (req: Request, res: Response) => {
+
+  const { id } = req.params
+
+  const result = await prisma.url.delete({
+    where: { id: id }
+  })
+
+  if (result) {
+    return res.status(200).json({ message: 'URL deleted!!' })
+  }
+
+  return res.status(404).json({ message: 'URL not found' })
 
 }
