@@ -6,7 +6,7 @@ export const urlRouter = Router()
 
 urlRouter.get('/', urlService.getAllUrls)
 
-urlRouter.post('/',urlService.createUrl)
+urlRouter.post('/', urlService.createUrl)
 
 urlRouter.get('/:id', urlService.getUrlById)
 
